@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MB Bank - Tài Khoản Đẹp</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #FF9E00, #FF4C00);
+    }
+
+    .banner {
+      width: 80%;
+      height: 500px;
+      background-color: #fff;
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      padding: 40px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    /* Phần trái - Thông tin */
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left h1 {
+      font-size: 42px;
+      color: #1C2A46;
+      font-weight: bold;
+      margin-bottom: 20px;
+      animation: slideIn 1s ease-out;
+    }
+
+    .left p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #4F4F4F;
+      margin-bottom: 20px;
+      opacity: 0.85;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .left button {
+      padding: 14px 28px;
+      background-color: #FF9800;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .left button:hover {
+      transform: scale(1.05);
+      background-color: #e68900;
+    }
+
+    /* Phần phải - Hình ảnh */
+    .right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .right img {
+      width: 100%;
+      max-width: 400px;
+      animation: zoomIn 1s ease-out;
+    }
+
+    /* Hiệu ứng chuyển động */
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Các biểu tượng phong thủy */
+    .icons {
+      display: flex;
+      margin-top: 30px;
+      justify-content: space-between;
+    }
+
+    .icons img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .icons img:hover {
+      transform: scale(1.2);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <!-- Phần trái - Thông tin quảng cáo -->
+    <div class="left">
+      <h1>Chọn Số Tài Khoản Đẹp Ngay</h1>
+      <p>Các số tài khoản như Tứ Quý, Phát Lộc, Tam Hoàng sẽ mang lại may mắn và tài lộc cho bạn. Đừng bỏ lỡ cơ hội sở hữu số tài khoản phong thủy phù hợp!</p>
+      <button>Khám Phá Ngay</button>
+
+      <div class="icons">
+        <img src="https://via.placeholder.com/40x40?text=%E2%9C%94" alt="Tứ Quý">
+        <img src="https://via.placeholder.com/40x40?text=%E2%9C%94" alt="Phát Lộc">
+        <img src="https://via.placeholder.com/40x40?text=%E2%9C%94" alt="Tam Hoàng">
+      </div>
+    </div>
+
+    <!-- Phần phải - Hình ảnh -->
+    <div class="right">
+      <img src="https://via.placeholder.com/450x350?text=S%E1%BB%91+T%C3%A0i+Kho%E1%BA%A3n+Phong+Th%E1%BB%A7y" alt="Số tài khoản phong thủy">
+    </div>
+  </div>
+
+</body>
+</html>

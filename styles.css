@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f6fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #0a1e3f;
+  color: white;
+  padding: 16px 0;
+  position: relative;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #ff9800;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle div {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+
+
+/* HERO */
+/* HERO TWO-COLUMN LAYOUT */
+.hero-section {
+  background: #f9fafc;
+  padding: 80px 20px;
+}
+
+.hero-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 60px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 560px;
+  padding-left: 20px;
+}
+
+.hero-text h2 {
+  font-size: 2.2rem;
+  color: #0a1e3f;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.hero-text p {
+  font-size: 1.125rem;
+  margin-bottom: 24px;
+  color: #444;
+}
+
+.cta-button {
+  background: #ff9800;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.cta-button:hover {
+  background: #e68900;
+}
+
+.hero-image {
+  flex: 1;
+  text-align: center;
+  min-width: 280px;
+}
+
+.hero-image img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-layout {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-text {
+    padding-left: 0;
+  }
+
+  .hero-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-image img {
+    max-width: 260px;
+  }
+}
+
+
+/* CARD LIST */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* TICKET */
+.ticket {
+  width: 580px;
+  background: linear-gradient(135deg, #fff9ec, #fff4d9);
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-left: 8px solid #ffb100;
+  transition: transform 0.3s ease;
+}
+
+.ticket:hover {
+  transform: translateY(-4px);
+}
+
+.ticket::before,
+.ticket::after {
+  content: '';
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: #f5f6fa;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.ticket::before {
+  left: -18px;
+}
+
+.ticket::after {
+  right: -18px;
+}
+
+.left {
+  padding: 28px;
+  flex: 3;
+}
+
+.right {
+  background: #0a1e3f;
+  color: white;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff9800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.desc {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.code {
+  background: #fff5cc;
+  border: 2px dashed #ff9800;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #d17700;
+}
+
+.button {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.amount {
+  font-size: 28px;
+  font-weight: 800;
+  background: #ff9800;
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.4);
+}
+
+.right small {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+/* FORM */
+form {
+  max-width: 500px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* FOOTER */
+.footer {
+  background: #0a1e3f;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 60px;
+}
+
+/* =============================== */
+/* RESPONSIVE: MOBILE OPTIMIZED   */
+/* =============================== */
+
+@media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .ticket {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .left,
+  .right {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .desc {
+    font-size: 14px;
+  }
+
+  .code {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .amount {
+    font-size: 20px;
+    padding: 10px 16px;
+  }
+}
+
+
+
+
+
+
+.how-to-use {
+  background: #fff;
+  padding: 60px 20px;
+}
+
+.how-to-use h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #0a1e3f;
+  font-weight: 800;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.step {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 24px;
+  flex: 1 1 280px;
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.step h3 {
+  color: #ff9800;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 16px;
+}
+
+
+
+.intro-highlight {
+  background: #fff3e0;
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid #ffe0b2;
+  border-bottom: 1px solid #ffe0b2;
+}
+
+.intro-highlight h2 {
+  color: #0a1e3f;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.intro-highlight h3 {
+  color: #0a1e3f;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.intro-highlight p {
+  font-size: 17px;
+  color: #333;
+  line-height: 1.8;
+}
