@@ -136,71 +136,96 @@
 
   /* ==== FLOATING BUTTONS (Giỏ hàng + Chat) ==== */
   .floating-buttons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999 !important;
-    pointer-events: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-end;
-  }
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
 
-  .floating-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #fff;
-    padding: 10px 16px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 15px;
-    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 120px;
-  }
-
-  .floating-cart {
-    background-color: var(--primary-color);
-    color: #fff;
-  }
-
-  .floating-chat {
-    background-color: var(--secondary-color);
-    color: #fff;
-  }
-
-  .floating-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.92;
-  }
-
-  .floating-button span {
-    flex: 1;
-    text-align: center;
-    font-size: 14px;
-  }
-
-  @media (max-width: 576px) {
     .floating-button {
-      padding: 8px 12px;
-      font-size: 13px;
-      min-width: 100px;
-    }
-
-    .floating-button span {
-      font-size: 13px;
-      white-space: nowrap;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .features-grid, .carousel-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
       justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: relative;
+      transition: transform 0.2s ease, background-color 0.3s;
     }
-  }
+
+    .floating-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .floating-cart {
+      background-color: var(--primary-color);
+    }
+
+    .floating-chat {
+      background-color: var(--secondary-color);
+    }
+
+    .floating-button::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 110%;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: 0.2s ease;
+      pointer-events: none;
+    }
+
+    .floating-button:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cart-added-flash {
+      animation: flashCart 0.6s ease;
+    }
+
+    @keyframes flashCart {
+      0% { transform: scale(1); background-color: var(--primary-color); }
+      50% { transform: scale(1.2); background-color: #28a745; }
+      100% { transform: scale(1); background-color: var(--primary-color); }
+    }
+
+    .toast-add {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #28a745;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10000;
+      font-size: 14px;
+      animation: fadeOut 2s forwards;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; transform: translateY(0); }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(10px); }
+    }
+
+
 </style>
 
 </head>
@@ -208,11 +233,11 @@
 
   <!-- Nút nổi giỏ hàng và chat -->
 <div class="floating-buttons">
-  <div class="floating-button floating-cart" onclick="toggleCart()">
-    🛒 <span id="cart-count">0</span>
+  <div class="floating-button floating-cart" onclick="toggleCart()" data-tooltip="Giỏ hàng">
+    🛒<span id="cart-count">0</span>
   </div>
-  <div class="floating-button floating-chat" onclick="openChat()">
-    💬 <span>Chat</span>
+  <div class="floating-button floating-chat" onclick="openChat()" data-tooltip="Chat hỗ trợ">
+    💬
   </div>
 </div>
 
@@ -434,7 +459,7 @@
 </section>
 
 <!-- Footer -->
-<footer class="py-4 text-center bg-dark text-white">
+<footer id="site-footer" class="py-4 text-center bg-dark text-white">
   <div class="container">
     <p class="mb-1 fw-semibold">&copy; 2025 STK Đẹp. Bản quyền được bảo hộ.</p>
     <p class="footer-note">
@@ -444,8 +469,23 @@
 </footer>
 
 
+<!-- Phần script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  const floatingBtns = document.querySelector('.floating-buttons');
+  const footer = document.getElementById('site-footer');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      floatingBtns.style.bottom = entry.isIntersecting ? '100px' : '20px';
+    });
+  }, {
+    root: null,
+    threshold: 0
+  });
+
+  observer.observe(footer);
+
   const stkList = [
     { number: '9999', desc: 'Tứ quý quyền lực' },
     { number: '6868', desc: 'Lộc phát song hành' },
@@ -472,6 +512,16 @@
   function addToCart(stk, price) {
     cart.push({ stk, price });
     updateCartIcon();
+
+    const cartBtn = document.querySelector('.floating-cart');
+    cartBtn.classList.add('cart-added-flash');
+    setTimeout(() => cartBtn.classList.remove('cart-added-flash'), 600);
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-add';
+    toast.textContent = `Đã thêm STK ${stk} vào giỏ hàng`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 2000);
   }
 
   function updateCartIcon() {
@@ -499,7 +549,7 @@
             <strong>${item.stk}</strong><br>
             <small>${item.price.toLocaleString()}đ</small>
           </div>
-          <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Xoá</button>
+          <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Ðổi</button>
         </li>`;
     });
     html += "</ul>";
