@@ -1,0 +1,115 @@
+/* main.css */
+:root {
+  --primary-color: #0056d2;
+  --secondary-color: #f7931e;
+  --bg-light: #f9fafc;
+  --text-dark: #1f2b3a;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.auto-hide-navbar {
+  transition:
+    transform 0.8s ease-in-out,
+    opacity 0.6s ease-in-out,
+    filter 0.6s ease-in-out;
+  will-change: transform, opacity, filter;
+  z-index: 1030;
+  backdrop-filter: blur(0px);
+}
+
+.auto-hide-navbar.hide {
+  transform: translateY(-80px) scale(0.98);
+  opacity: 0;
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+
+
+#login-button {
+  white-space: nowrap;
+}
+
+.auto-hide-navbar {
+  transition:
+    transform 0.8s ease-in-out,
+    opacity 0.6s ease-in-out,
+    filter 0.6s ease-in-out;
+  will-change: transform, opacity, filter;
+  z-index: 1030;
+  backdrop-filter: blur(0px);
+}
+
+.auto-hide-navbar.hide {
+  transform: translateY(-80px) scale(0.98);
+  opacity: 0;
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+footer {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Floating chat button */
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.floating-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.floating-chat {
+  background-color: var(--secondary-color);
+}
+
+.floating-button:hover {
+  transform: translateY(-2px);
+}
+
+.floating-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: 110%;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: 0.2s ease;
+  pointer-events: none;
+}
+
+.floating-button:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}

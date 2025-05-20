@@ -1,291 +1,314 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>STK Đẹp - Trang chủ</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description"
+    content="Chọn số tài khoản đẹp MB Bank theo ngày sinh, phong thủy, dễ nhớ. Giá ưu đãi, hỗ trợ nhanh chóng, mở tài khoản online an toàn." />
+  <meta name="keywords" content="STK đẹp, số tài khoản đẹp, MB Bank, tài khoản phong thủy, số đẹp ngân hàng" />
+  <meta name="author" content="STK Đẹp" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <style>
-  :root {
-  --primary-color: #0056d2;
-  --secondary-color: #f7931e;
-  --bg-light: #f9fafc;
-  --text-dark: #1f2b3a;
-}
+    :root {
+      --primary-color: #0056d2;
+      --secondary-color: #f7931e;
+      --bg-light: #f9fafc;
+      --text-dark: #1f2b3a;
+    }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-light);
-  color: var(--text-dark);
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
 
-section {
-  padding: 60px 0;
-}
+    .auto-hide-navbar {
+      transition:
+        transform 0.8s ease-in-out,
+        opacity 0.6s ease-in-out,
+        filter 0.6s ease-in-out;
+      will-change: transform, opacity, filter;
+      z-index: 1030;
+      backdrop-filter: blur(0px);
+    }
 
-h2 {
-  font-weight: 700;
-}
-
-.btn-cta {
-  background: linear-gradient(45deg, var(--secondary-color), #FFA733);
-  color: white;
-  border: none;
-  font-weight: 600;
-  border-radius: 8px;
-  padding: 10px 20px;
-}
-
-.btn-cta:hover {
-  background: linear-gradient(45deg, #FFA733, var(--secondary-color));
-  box-shadow: 0 0 12px rgba(247, 147, 30, 0.4);
-  color: white;
-}
-
-#stk-highlight {
-  transition: opacity 0.4s ease;
-}
-
-/* Features Grid */
-.features-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 2rem;
-}
-
-.feature-item {
-  background: white;
-  border-radius: 16px;
-  max-width: 300px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
-  transition: 0.3s ease;
-}
-
-.feature-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: var(--secondary-color);
-}
-
-/* Carousel */
-.carousel-wrapper {
-  display: flex;
-  overflow-x: auto;
-  gap: 1.5rem;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-}
-
-.ticket-card {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  width: 300px;
-  border-left: 6px solid var(--secondary-color);
-  border-radius: 16px;
-  background: linear-gradient(135deg, #fffefc, #fff5e6);
-  padding: 1.5rem;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
-}
-
-.ticket-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* Timeline */
-.timeline {
-  position: relative;
-  margin-left: 40px;
-  border-left: 4px solid var(--primary-color);
-}
-
-.timeline-step {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-left: 20px;
-}
-
-.timeline-step::before {
-  content: "🔹";
-  position: absolute;
-  left: -30px;
-  top: 0;
-  font-size: 1.2rem;
-}
-
-.timeline-step h5 {
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.timeline-step p {
-  margin-top: 5px;
-}
-
-/* Footer */
-.footer-note {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-/* Floating Buttons (Desktop only) */
-.floating-buttons {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-end;
-}
-
-.floating-button {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  position: relative;
-  transition: transform 0.2s ease, background-color 0.3s;
-}
-
-.floating-button:hover {
-  transform: translateY(-2px);
-}
-
-.floating-cart {
-  background-color: var(--primary-color);
-}
-
-.floating-chat {
-  background-color: var(--secondary-color);
-}
-
-.floating-button::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  right: 110%;
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: 0.2s ease;
-  pointer-events: none;
-}
-
-.floating-button:hover::after {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Bottom bar (Mobile only) */
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border-top: 1px solid #ddd;
-  display: none;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-  z-index: 9999;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-}
-
-.bar-btn {
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  font-size: 16px;
-  font-weight: 600;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-}
-
-.bar-btn span {
-  font-size: 12px;
-  margin-top: 2px;
-}
-
-/* Responsive behavior */
-@media (max-width: 767.98px) {
-  .floating-buttons {
-    display: none !important;
-  }
-  .bottom-bar {
-    display: flex !important;
-  }
-}
-
-/* Cart Toast */
-.toast-add {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background: #28a745;
-  color: #fff;
-  padding: 10px 14px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  z-index: 10000;
-  font-size: 14px;
-  animation: fadeOut 2s forwards;
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; transform: translateY(0); }
-  80% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(10px); }
-}
-
-/* Cart Button Flash */
-.cart-added-flash {
-  animation: flashCart 0.6s ease;
-}
-
-@keyframes flashCart {
-  0% { transform: scale(1); background-color: var(--primary-color); }
-  50% { transform: scale(1.2); background-color: #28a745; }
-  100% { transform: scale(1); background-color: var(--primary-color); }
-}
+    .auto-hide-navbar.hide {
+      transform: translateY(-80px) scale(0.98);
+      opacity: 0;
+      filter: blur(4px);
+      pointer-events: none;
+    }
 
 
 
-</style>
+    #login-button {
+      white-space: nowrap;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    h2 {
+      font-weight: 700;
+    }
+
+    .btn-cta {
+      background: linear-gradient(45deg, var(--secondary-color), #FFA733);
+      color: white;
+      border: none;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 10px 20px;
+    }
+
+    .btn-cta:hover {
+      background: linear-gradient(45deg, #FFA733, var(--secondary-color));
+      box-shadow: 0 0 12px rgba(247, 147, 30, 0.4);
+      color: white;
+    }
+
+    #stk-highlight {
+      transition: opacity 0.4s ease;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: 2rem;
+    }
+
+    .feature-item {
+      background: white;
+      border-radius: 16px;
+      max-width: 300px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+      transition: 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      overflow-x: auto;
+      gap: 1.5rem;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+    }
+
+    .ticket-card {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      width: 300px;
+      border-left: 6px solid var(--secondary-color);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fffefc, #fff5e6);
+      padding: 1.5rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .ticket-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 40px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 20px;
+    }
+
+    .timeline-step::before {
+      content: "🔹";
+      position: absolute;
+      left: -30px;
+      top: 0;
+      font-size: 1.2rem;
+    }
+
+    .timeline-step h5 {
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .timeline-step p {
+      margin-top: 5px;
+    }
+
+    .footer-note {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* ==== FLOATING BUTTONS (Giỏ hàng + Chat) ==== */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .floating-button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: relative;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    .floating-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Màu riêng cho nút */
+    .floating-chat {
+      background-color: var(--secondary-color);
+    }
+
+    /* Tooltip */
+    .floating-button::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 110%;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: 0.2s ease;
+      pointer-events: none;
+    }
+
+    .floating-button:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    @media (max-width: 576px) {
+      .floating-button {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-width: 100px;
+      }
+
+      .floating-button span {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .features-grid,
+      .carousel-wrapper {
+        justify-content: center;
+      }
+    }
+  </style>
 
 </head>
-<body>
+<header class="sticky-top bg-white shadow-sm auto-hide-navbar">
+  <!-- Navbar menu điều hướng -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm py-3">
+    <div class="container">
+      <!-- Logo bên trái -->
+      <a class="navbar-brand fw-bold text-primary fs-4" href="#">STK Đẹp</a>
 
-  <!-- Nút nổi giỏ hàng và chat -->
+      <!-- Giỏ hàng + Đăng nhập (mobile only) -->
+      <div class="d-flex d-lg-none ms-auto gap-2">
+        <button onclick="toggleCart()" class="btn btn-sm btn-outline-primary position-relative">
+          🛒
+          <span id="cart-count-mobile"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            0
+          </span>
+        </button>
+        <a href="#" class="btn btn-sm btn-primary fw-semibold">Đăng nhập</a>
+      </div>
+
+      <!-- Toggle menu -->
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-lg-auto mb-2 mb-lg-0 w-100 justify-content-lg-end justify-content-center text-center">
+          <li class="nav-item px-2">
+            <a class="nav-link active fw-semibold" href="index.html">Trang chủ</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="offers.html">Ưu đãi</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="about.html">Giới thiệu</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="contact.html">Liên hệ</a>
+          </li>
+        </ul>
+
+        <!-- Giỏ hàng + Đăng nhập (desktop only) -->
+        <div class="d-none d-lg-flex align-items-center gap-3 ms-lg-3">
+          <!-- Giỏ hàng -->
+          <button onclick="toggleCart()" class="btn btn-outline-primary position-relative">
+            🛒
+            <span id="cart-count-desktop"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              0
+            </span>
+          </button>
+
+          <!-- Đăng nhập -->
+          <a href="#" class="btn btn-primary fw-semibold px-3 py-2" id="login-button">Đăng nhập</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- Nút nổi giỏ hàng và chat -->
 <div class="floating-buttons">
-  <div class="floating-button floating-cart" onclick="toggleCart()" data-tooltip="Giỏ hàng">
-    🛒<span id="cart-count">0</span>
-  </div>
   <div class="floating-button floating-chat" onclick="openChat()" data-tooltip="Chat hỗ trợ">
     💬
   </div>
@@ -310,335 +333,263 @@ h2 {
   </div>
 </div>
 
+<body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold text-primary" href="#">STK Đẹp</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Ưu đãi</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Giới thiệu</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
-        <li class="nav-item ms-3">
-          <a href="#" class="btn btn-outline-primary">Đăng nhập</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-<!-- Hero (hiệu ứng STK động) -->
-<section class="py-5 bg-light">
-  <div class="container text-center">
-    <h1 class="fw-bold text-primary mb-3">Số tài khoản đẹp MB Bank</h1>
-    <p class="lead mb-4">Sở hữu số tài khoản ý nghĩa – phong thủy – dễ nhớ với mức giá ưu đãi chưa từng có.</p>
-    <div class="d-inline-block px-4 py-3 bg-white rounded-pill shadow-sm">
-      <span class="fw-bold text-danger fs-4" id="stk-highlight">STK: 9999 – Tứ quý quyền lực</span>
-    </div>
-    <div>
-      <a href="#" class="btn btn-cta btn-lg mt-4">Xem ưu đãi ngay</a>
-    </div>
-  </div>
-</section>
 
-<!-- Vì sao nên chọn -->
-<section class="bg-light text-center">
-  <div class="container">
-    <h2 class="text-primary mb-5">Vì sao nên chọn chúng tôi?</h2>
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">💰</div>
-        <h6 class="fw-bold">Giá tốt nhất</h6>
-        <p>Ưu đãi đến 100% với mã độc quyền tại STK Đẹp.</p>
+  <!-- Hero (hiệu ứng STK động) -->
+  <section class="py-5 bg-light">
+    <div class="container text-center">
+      <h1 class="fw-bold text-primary mb-3">Số tài khoản đẹp MB Bank</h1>
+      <p class="lead mb-4">Sở hữu số tài khoản ý nghĩa – phong thủy – dễ nhớ với mức giá ưu đãi chưa từng có.</p>
+      <div class="d-inline-block px-4 py-3 bg-white rounded-pill shadow-sm">
+        <span class="fw-bold text-danger fs-4" id="stk-highlight">STK: 9999 – Tứ quý quyền lực</span>
       </div>
-      <div class="feature-item">
-        <div class="feature-icon">🔍</div>
-        <h6 class="fw-bold">Chọn số dễ dàng</h6>
-        <p>Chọn theo ngày sinh, phong thủy, lộc phát...</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">📞</div>
-        <h6 class="fw-bold">Hỗ trợ 24/7</h6>
-        <p>Liên hệ qua Zalo, Facebook, điện thoại, email.</p>
+      <div>
+        <a href="#" class="btn btn-cta btn-lg mt-4">Xem ưu đãi ngay</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Sản phẩm nổi bật -->
-<section class="bg-white text-center">
-  <div class="container">
-    <h2 class="text-primary fw-bold mb-5">Sản phẩm nổi bật</h2>
-    <div class="carousel-wrapper">
-      <div class="ticket-card">
-        <h5 class="fw-bold mb-2">STK: 68686868</h5>
-        <p class="mb-1">Phong thủy – Lộc phát toàn diện</p>
-        <p class="text-danger fw-semibold">Giá chỉ: 990.000đ</p>
-        <button class="btn btn-outline-primary btn-sm mt-2" onclick="addToCart('68686868', 990000)">Mua ngay</button>
-      </div>
-      <div class="ticket-card">
-        <h5 class="fw-bold mb-2">STK: 01234567</h5>
-        <p class="mb-1">Dễ nhớ, đẹp toàn diện</p>
-        <p class="text-danger fw-semibold">Giá chỉ: 1.490.000đ</p>
-        <button class="btn btn-outline-primary btn-sm mt-2">Mua ngay</button>
-      </div>
-      <div class="ticket-card">
-        <h5 class="fw-bold mb-2">STK: 99999999</h5>
-        <p class="mb-1">Số siêu VIP – Tài lộc đỉnh cao</p>
-        <p class="text-danger fw-semibold">Giá chỉ: 9.999.000đ</p>
-        <button class="btn btn-outline-primary btn-sm mt-2">Mua ngay</button>
+  <!-- Vì sao nên chọn -->
+  <section class="bg-light text-center">
+    <div class="container">
+      <h2 class="text-primary mb-5">Vì sao nên chọn chúng tôi?</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">💰</div>
+          <h6 class="fw-bold">Giá tốt nhất</h6>
+          <p>Ưu đãi đến 100% với mã độc quyền tại STK Đẹp.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔍</div>
+          <h6 class="fw-bold">Chọn số dễ dàng</h6>
+          <p>Chọn theo ngày sinh, phong thủy, lộc phát...</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📞</div>
+          <h6 class="fw-bold">Hỗ trợ 24/7</h6>
+          <p>Liên hệ qua Zalo, Facebook, điện thoại, email.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Quy trình đăng ký -->
-<section class="bg-light">
-  <div class="container">
-    <h2 class="text-primary fw-bold mb-5 text-center">Quy trình đăng ký</h2>
-    <div class="timeline">
-      <div class="timeline-step">
-        <h5>Bước 1</h5>
-        <p>Nhập họ tên và số điện thoại trùng MB Bank.</p>
-      </div>
-      <div class="timeline-step">
-        <h5>Bước 2</h5>
-        <p>Nhận mã giảm giá qua thông báo trong app.</p>
-      </div>
-      <div class="timeline-step">
-        <h5>Bước 3</h5>
-        <p>Chọn STK & nhập mã để thanh toán ưu đãi.</p>
+  <!-- Sản phẩm nổi bật -->
+  <section class="bg-white text-center">
+    <div class="container">
+      <h2 class="text-primary fw-bold mb-5">Sản phẩm nổi bật</h2>
+      <div class="carousel-wrapper">
+        <div class="ticket-card">
+          <h5 class="fw-bold mb-2">STK: 68686868</h5>
+          <p class="mb-1">Phong thủy – Lộc phát toàn diện</p>
+          <p class="text-danger fw-semibold">Giá chỉ: 990.000đ</p>
+          <button class="btn btn-outline-primary btn-sm mt-2" onclick="addToCart('68686868', 990000)">Mua ngay</button>
+        </div>
+        <div class="ticket-card">
+          <h5 class="fw-bold mb-2">STK: 01234567</h5>
+          <p class="mb-1">Dễ nhớ, đẹp toàn diện</p>
+          <p class="text-danger fw-semibold">Giá chỉ: 1.490.000đ</p>
+          <button class="btn btn-outline-primary btn-sm mt-2">Mua ngay</button>
+        </div>
+        <div class="ticket-card">
+          <h5 class="fw-bold mb-2">STK: 99999999</h5>
+          <p class="mb-1">Số siêu VIP – Tài lộc đỉnh cao</p>
+          <p class="text-danger fw-semibold">Giá chỉ: 9.999.000đ</p>
+          <button class="btn btn-outline-primary btn-sm mt-2">Mua ngay</button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Accordion: Điều kiện -->
-<section class="py-4 bg-white">
-  <div class="container">
-    <h2 class="text-center text-primary fw-bold mb-4">Thông tin thêm</h2>
-    <div class="accordion" id="infoAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="conditionHeader">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#conditionContent">
-            Điều kiện để sở hữu STK đẹp
-          </button>
-        </h2>
-        <div id="conditionContent" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
-          <div class="accordion-body">
-            <p>Bạn cần <strong>đã có tài khoản MB Bank</strong> mới mua STK đẹp.</p>
-            <p>Nếu chưa có, bạn có thể <a href="https://mbbank.vn/landingpage?ref=STKDEP">đăng ký tại đây</a> để nhận mã ưu đãi lên đến 11 triệu đồng.</p>
-            <p>Mở tài khoản online, không cần ra ngân hàng.</p>
+  <!-- Quy trình đăng ký -->
+  <section class="bg-light">
+    <div class="container">
+      <h2 class="text-primary fw-bold mb-5 text-center">Quy trình đăng ký</h2>
+      <div class="timeline">
+        <div class="timeline-step">
+          <h5>Bước 1</h5>
+          <p>Nhập họ tên và số điện thoại trùng MB Bank.</p>
+        </div>
+        <div class="timeline-step">
+          <h5>Bước 2</h5>
+          <p>Nhận mã giảm giá qua thông báo trong app.</p>
+        </div>
+        <div class="timeline-step">
+          <h5>Bước 3</h5>
+          <p>Chọn STK & nhập mã để thanh toán ưu đãi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accordion: Điều kiện -->
+  <section class="py-4 bg-white">
+    <div class="container">
+      <h2 class="text-center text-primary fw-bold mb-4">Thông tin thêm</h2>
+      <div class="accordion" id="infoAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="conditionHeader">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#conditionContent">
+              Điều kiện để sở hữu STK đẹp
+            </button>
+          </h2>
+          <div id="conditionContent" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
+            <div class="accordion-body">
+              <p>Bạn cần <strong>đã có tài khoản MB Bank</strong> mới mua STK đẹp.</p>
+              <p>Nếu chưa có, bạn có thể <a href="https://mbbank.vn/landingpage?ref=STKDEP">đăng ký tại đây</a> để nhận
+                mã ưu đãi lên đến 11 triệu đồng.</p>
+              <p>Mở tài khoản online, không cần ra ngân hàng.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FAQ -->
-<section class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center text-primary mb-4">Câu hỏi thường gặp</h2>
-    <div class="accordion" id="faqAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="q1">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
-            STK đẹp là gì?
-          </button>
-        </h2>
-        <div id="a1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Là số tài khoản ngân hàng MB Bank được chọn theo yêu cầu cá nhân: ngày sinh, số phong thủy, số dễ nhớ...
+  <!-- FAQ -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center text-primary mb-4">Câu hỏi thường gặp</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+              STK đẹp là gì?
+            </button>
+          </h2>
+          <div id="a1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Là số tài khoản ngân hàng MB Bank được chọn theo yêu cầu cá nhân: ngày sinh, số phong thủy, số dễ nhớ...
+            </div>
           </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="q2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
-            Có phải số nào cũng mua được không?
-          </button>
-        </h2>
-        <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Bạn sẽ được lựa chọn số còn trống trong hệ thống MB Bank – không phải mọi số đều có sẵn.
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+              Có phải số nào cũng mua được không?
+            </button>
+          </h2>
+          <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Bạn sẽ được lựa chọn số còn trống trong hệ thống MB Bank – không phải mọi số đều có sẵn.
+            </div>
           </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="q3">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
-            Mua xong tôi dùng ở đâu?
-          </button>
-        </h2>
-        <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Sau khi thanh toán, bạn nhận mã và sử dụng trực tiếp trong app MB Bank để kích hoạt số tài khoản.
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
+              Mua xong tôi dùng ở đâu?
+            </button>
+          </h2>
+          <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Sau khi thanh toán, bạn nhận mã và sử dụng trực tiếp trong app MB Bank để kích hoạt số tài khoản.
+            </div>
           </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="q4">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a4">
-            Tôi có cần cung cấp thông tin gì không?
-          </button>
-        </h2>
-        <div id="a4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Có. Bạn cần cung cấp <strong>họ tên và số điện thoại</strong> đúng như trên app MB Bank để ngân hàng có thể gửi mã ưu đãi về tài khoản MB của bạn.
-            <br><br>
-            Chúng tôi <strong>không yêu cầu đăng nhập, không giữ căn cước, không can thiệp vào tài khoản</strong>. Mọi thao tác đều an toàn và do bạn chủ động thực hiện.
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q4">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a4">
+              Tôi có cần cung cấp thông tin gì không?
+            </button>
+          </h2>
+          <div id="a4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Có. Bạn cần cung cấp <strong>họ tên và số điện thoại</strong> đúng như trên app MB Bank để ngân hàng có
+              thể gửi mã ưu đãi về tài khoản MB của bạn.
+              <br><br>
+              Chúng tôi <strong>không yêu cầu đăng nhập, không giữ căn cước, không can thiệp vào tài khoản</strong>. Mọi
+              thao tác đều an toàn và do bạn chủ động thực hiện.
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CTA -->
-<section class="py-5 text-center text-white" style="background: linear-gradient(45deg, #0056D2, #003C94);">
-  <div class="container">
-    <h2 class="mb-3">Sẵn sàng sở hữu STK đẹp chưa?</h2>
-    <a href="#" class="btn btn-light btn-lg">Bắt đầu ngay</a>
-  </div>
-</section>
+  <!-- CTA -->
+  <section class="py-5 text-center text-white" style="background: linear-gradient(45deg, #0056D2, #003C94);">
+    <div class="container">
+      <h2 class="mb-3">Sẵn sàng sở hữu STK đẹp chưa?</h2>
+      <a href="#" class="btn btn-light btn-lg">Bắt đầu ngay</a>
+    </div>
+  </section>
 
-<!-- Footer -->
-<footer id="site-footer" class="py-4 text-center bg-dark text-white">
-  <div class="container">
-    <p class="mb-1 fw-semibold">&copy; 2025 STK Đẹp. Bản quyền được bảo hộ.</p>
-    <p class="footer-note">
-      Website không trực thuộc MB Bank. Chúng tôi là đơn vị cung cấp mã ưu đãi hợp tác với ngân hàng.
-    </p>
-  </div>
-</footer>
-
-
-<!-- Floating buttons (desktop only) -->
-<div class="floating-buttons d-none d-md-flex">
-  <div class="floating-button floating-cart" onclick="toggleCart()" data-tooltip="Giỏ hàng">
-    🛒<span id="cart-count" class="ms-1">0</span>
-  </div>
-  <div class="floating-button floating-chat" onclick="openChat()" data-tooltip="Chat hỗ trợ">
-    💬
-  </div>
-</div>
-
-<!-- Bottom bar (mobile only) -->
-<div class="bottom-bar d-flex d-md-none">
-  <button onclick="toggleCart()" class="bar-btn">
-    🛒 <span id="cart-count">0</span>
-    <span>Giỏ hàng</span>
-  </button>
-  <button onclick="openChat()" class="bar-btn">
-    💬 <span>Hỗ trợ</span>
-  </button>
-</div>
+  <!-- Footer -->
+  <footer id="site-footer" class="py-4 text-center bg-dark text-white">
+    <div class="container">
+      <p class="mb-1 fw-semibold">&copy; 2025 STK Đẹp. Bản quyền được bảo hộ.</p>
+      <p class="footer-note">
+        Website không trực thuộc MB Bank. Chúng tôi là đơn vị cung cấp mã ưu đãi hợp tác với ngân hàng.
+      </p>
+    </div>
+  </footer>
 
 
+  <!-- Phần script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
 
 
-<!-- Phần script -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const floatingBtns = document.querySelector('.floating-buttons');
-  const footer = document.getElementById('site-footer');
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.auto-hide-navbar');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      floatingBtns.style.bottom = entry.isIntersecting ? '100px' : '20px';
+    window.addEventListener("scroll", function () {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > lastScrollTop && currentScroll > 60) {
+        // Cuộn xuống
+        navbar.classList.add("hide");
+      } else {
+        // Cuộn lên
+        navbar.classList.remove("hide");
+      }
+
+      lastScrollTop = currentScroll;
     });
-  }, {
-    root: null,
-    threshold: 0
-  });
 
-  observer.observe(footer);
 
-  const stkList = [
-    { number: '9999', desc: 'Tứ quý quyền lực' },
-    { number: '6868', desc: 'Lộc phát song hành' },
-    { number: '7979', desc: 'Thần tài kép' },
-    { number: '3939', desc: 'Tài lộc vững vàng' },
-    { number: '2024', desc: 'Năm sinh ý nghĩa' },
-    { number: '123456', desc: 'Dãy tiến đều đẹp' }
-  ];
+    const floatingBtns = document.querySelector('.floating-buttons');
+    const footer = document.getElementById('site-footer');
 
-  let current = 0;
-  const el = document.getElementById("stk-highlight");
-  setInterval(() => {
-    const stk = stkList[current];
-    el.style.opacity = 0;
-    setTimeout(() => {
-      el.textContent = `STK: ${stk.number} – ${stk.desc}`;
-      el.style.opacity = 1;
-    }, 300);
-    current = (current + 1) % stkList.length;
-  }, 2500);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        floatingBtns.style.bottom = entry.isIntersecting ? '100px' : '20px';
+      });
+    }, {
+      root: null,
+      threshold: 0
+    });
 
-  let cart = [];
+    observer.observe(footer);
 
-  function addToCart(stk, price) {
-    cart.push({ stk, price });
-    updateCartIcon();
+    const stkList = [
+      { number: '9999', desc: 'Tứ quý quyền lực' },
+      { number: '6868', desc: 'Lộc phát song hành' },
+      { number: '7979', desc: 'Thần tài kép' },
+      { number: '3939', desc: 'Tài lộc vững vàng' },
+      { number: '2024', desc: 'Năm sinh ý nghĩa' },
+      { number: '123456', desc: 'Dãy tiến đều đẹp' }
+    ];
 
-    const cartBtn = document.querySelector('.floating-cart');
-    cartBtn.classList.add('cart-added-flash');
-    setTimeout(() => cartBtn.classList.remove('cart-added-flash'), 600);
+    let current = 0;
+    const el = document.getElementById("stk-highlight");
+    setInterval(() => {
+      const stk = stkList[current];
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.textContent = `STK: ${stk.number} – ${stk.desc}`;
+        el.style.opacity = 1;
+      }, 300);
+      current = (current + 1) % stkList.length;
+    }, 2500);
 
-    const toast = document.createElement('div');
-    toast.className = 'toast-add';
-    toast.textContent = `Đã thêm STK ${stk} vào giỏ hàng`;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 2000);
-  }
-
-  function updateCartIcon() {
-    document.getElementById("cart-count").textContent = cart.length;
-  }
-
-  function toggleCart() {
-    const modal = new bootstrap.Modal(document.getElementById('cartModal'));
-    renderCartItems();
-    modal.show();
-  }
-
-  function renderCartItems() {
-    const container = document.getElementById("cart-items");
-    if (cart.length === 0) {
-      container.innerHTML = "<p>Chưa có sản phẩm nào.</p>";
-      return;
+    function openChat() {
+      alert("Tính năng chat AI hoặc hỗ trợ sẽ được tích hợp sau.");
     }
-
-    let html = "<ul class='list-group'>";
-    cart.forEach((item, index) => {
-      html += `
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <strong>${item.stk}</strong><br>
-            <small>${item.price.toLocaleString()}đ</small>
-          </div>
-          <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Ðổi</button>
-        </li>`;
-    });
-    html += "</ul>";
-    container.innerHTML = html;
-  }
-
-  function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCartIcon();
-    renderCartItems();
-  }
-
-  function openChat() {
-    alert("Tính năng chat AI hoặc hỗ trợ sẽ được tích hợp sau.");
-  }
-</script>
+  </script>
 </body>
+
 </html>
