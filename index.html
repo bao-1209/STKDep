@@ -2,92 +2,519 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STK Dep | Trang Chủ</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STK Đẹp - Trang chủ</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --primary-color: #0056d2;
+    --secondary-color: #f7931e;
+    --bg-light: #f9fafc;
+    --text-dark: #1f2b3a;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  h2 {
+    font-weight: 700;
+  }
+
+  .btn-cta {
+    background: linear-gradient(45deg, var(--secondary-color), #FFA733);
+    color: white;
+    border: none;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 10px 20px;
+  }
+
+  .btn-cta:hover {
+    background: linear-gradient(45deg, #FFA733, var(--secondary-color));
+    box-shadow: 0 0 12px rgba(247, 147, 30, 0.4);
+    color: white;
+  }
+
+  #stk-highlight {
+    transition: opacity 0.4s ease;
+  }
+
+  .features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 2rem;
+  }
+
+  .feature-item {
+    background: white;
+    border-radius: 16px;
+    max-width: 300px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+    transition: 0.3s ease;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+  }
+
+  .carousel-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+  }
+
+  .ticket-card {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    width: 300px;
+    border-left: 6px solid var(--secondary-color);
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fffefc, #fff5e6);
+    padding: 1.5rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+  }
+
+  .ticket-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .timeline {
+    position: relative;
+    margin-left: 40px;
+    border-left: 4px solid var(--primary-color);
+  }
+
+  .timeline-step {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 20px;
+  }
+
+  .timeline-step::before {
+    content: "🔹";
+    position: absolute;
+    left: -30px;
+    top: 0;
+    font-size: 1.2rem;
+  }
+
+  .timeline-step h5 {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+
+  .timeline-step p {
+    margin-top: 5px;
+  }
+
+  .footer-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  /* ==== FLOATING BUTTONS (Giỏ hàng + Chat) ==== */
+  .floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999 !important;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+  }
+
+  .floating-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #fff;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+  }
+
+  .floating-cart {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+  .floating-chat {
+    background-color: var(--secondary-color);
+    color: #fff;
+  }
+
+  .floating-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+  }
+
+  .floating-button span {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  @media (max-width: 576px) {
+    .floating-button {
+      padding: 8px 12px;
+      font-size: 13px;
+      min-width: 100px;
+    }
+
+    .floating-button span {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .features-grid, .carousel-wrapper {
+      justify-content: center;
+    }
+  }
+</style>
+
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="container">
-      <h1 class="logo">STK Dep</h1>
+  <!-- Nút nổi giỏ hàng và chat -->
+<div class="floating-buttons">
+  <div class="floating-button floating-cart" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+  </div>
+  <div class="floating-button floating-chat" onclick="openChat()">
+    💬 <span>Chat</span>
+  </div>
+</div>
 
-      <!-- Toggle menu for mobile -->
-      <div class="menu-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
-        <div></div>
-        <div></div>
-        <div></div>
+<!-- Modal giỏ hàng -->
+<div class="modal fade" id="cartModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Giỏ hàng của bạn</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-
-      <nav class="nav-menu">
-        <a href="index.html">Trang chủ</a>
-        <a href="offers.html">Ưu đãi</a>
-        <a href="about.html">Giới thiệu</a>
-        <a href="contact.html">Liên hệ</a>
-        <a href="login.html" class="login-btn">Đăng nhập</a>
-      </nav>
+      <div class="modal-body" id="cart-items">
+        <p>Chưa có sản phẩm nào.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button class="btn btn-primary">Thanh toán</button>
+      </div>
     </div>
-  </header>
+  </div>
+</div>
 
-  <!-- Hero section -->
-  <main class="main-content">
-<section class="hero-section">
-  <div class="container hero-layout">
-    <div class="hero-text">
-      <h2>Ưu đãi giá tài khoản đẹp từ MB Bank</h2>
-      <p>Chọn số tài khoản theo phong thủy, ngày sinh, tài lộc với mức giá ưu đãi cực hấp dẫn.</p>
-      <a href="offers.html" class="cta-button">Khám phá ngay</a>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="#">STK Đẹp</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#">Trang chủ</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Ưu đãi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Giới thiệu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Liên hệ</a></li>
+        <li class="nav-item ms-3">
+          <a href="#" class="btn btn-outline-primary">Đăng nhập</a>
+        </li>
+      </ul>
     </div>
-    <div class="hero-image">
-      <img src="Assets/img/Hero-image.png" alt="Bảo vệ tài khoản">
+  </div>
+</nav>
+
+<!-- Hero (hiệu ứng STK động) -->
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h1 class="fw-bold text-primary mb-3">Số tài khoản đẹp MB Bank</h1>
+    <p class="lead mb-4">Sở hữu số tài khoản ý nghĩa – phong thủy – dễ nhớ với mức giá ưu đãi chưa từng có.</p>
+    <div class="d-inline-block px-4 py-3 bg-white rounded-pill shadow-sm">
+      <span class="fw-bold text-danger fs-4" id="stk-highlight">STK: 9999 – Tứ quý quyền lực</span>
+    </div>
+    <div>
+      <a href="#" class="btn btn-cta btn-lg mt-4">Xem ưu đãi ngay</a>
     </div>
   </div>
 </section>
 
-
-
-    <!-- Intro highlight -->
-    <section class="intro-highlight">
-      <div class="container">
-        <h2>Mã giảm giá số tài khoản đẹp</h2>
-        <h3>lựa chọn thông minh & tiết kiệm</h3>
-        <p>
-          Thay vì phải mua số tài khoản đẹp với mức giá gốc cao tại ngân hàng,<br />
-          bạn có thể sở hữu ngay ưu đãi cực lớn chỉ với một khoản chi phí nhỏ khi mua mã giảm giá trên trang của chúng tôi.<br />
-          Nhập mã vào ứng dụng MB Bank và tận hưởng <strong>ưu đãi lên tới 100% giá trị</strong> tại bước thanh toán.
-        </p>
+<!-- Vì sao nên chọn -->
+<section class="bg-light text-center">
+  <div class="container">
+    <h2 class="text-primary mb-5">Vì sao nên chọn chúng tôi?</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">💰</div>
+        <h6 class="fw-bold">Giá tốt nhất</h6>
+        <p>Ưu đãi đến 100% với mã độc quyền tại STK Đẹp.</p>
       </div>
-    </section>
+      <div class="feature-item">
+        <div class="feature-icon">🔍</div>
+        <h6 class="fw-bold">Chọn số dễ dàng</h6>
+        <p>Chọn theo ngày sinh, phong thủy, lộc phát...</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📞</div>
+        <h6 class="fw-bold">Hỗ trợ 24/7</h6>
+        <p>Liên hệ qua Zalo, Facebook, điện thoại, email.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- How to use -->
-    <section class="how-to-use">
-      <div class="container">
-        <h2>Quy trình sử dụng</h2>
-        <div class="steps">
-          <div class="step">
-            <h3>Bước 1</h3>
-            <p>Mua mã giảm giá trên trang web của chúng tôi.</p>
-          </div>
-          <div class="step">
-            <h3>Bước 2</h3>
-            <p>Vào app MB Bank, chọn số tài khoản đẹp theo ý muốn.</p>
-          </div>
-          <div class="step">
-            <h3>Bước 3</h3>
-            <p>Áp dụng mã giảm giá và xác nhận số tài khoản.</p>
+<!-- Sản phẩm nổi bật -->
+<section class="bg-white text-center">
+  <div class="container">
+    <h2 class="text-primary fw-bold mb-5">Sản phẩm nổi bật</h2>
+    <div class="carousel-wrapper">
+      <div class="ticket-card">
+        <h5 class="fw-bold mb-2">STK: 68686868</h5>
+        <p class="mb-1">Phong thủy – Lộc phát toàn diện</p>
+        <p class="text-danger fw-semibold">Giá chỉ: 990.000đ</p>
+        <button class="btn btn-outline-primary btn-sm mt-2" onclick="addToCart('68686868', 990000)">Mua ngay</button>
+      </div>
+      <div class="ticket-card">
+        <h5 class="fw-bold mb-2">STK: 01234567</h5>
+        <p class="mb-1">Dễ nhớ, đẹp toàn diện</p>
+        <p class="text-danger fw-semibold">Giá chỉ: 1.490.000đ</p>
+        <button class="btn btn-outline-primary btn-sm mt-2">Mua ngay</button>
+      </div>
+      <div class="ticket-card">
+        <h5 class="fw-bold mb-2">STK: 99999999</h5>
+        <p class="mb-1">Số siêu VIP – Tài lộc đỉnh cao</p>
+        <p class="text-danger fw-semibold">Giá chỉ: 9.999.000đ</p>
+        <button class="btn btn-outline-primary btn-sm mt-2">Mua ngay</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quy trình đăng ký -->
+<section class="bg-light">
+  <div class="container">
+    <h2 class="text-primary fw-bold mb-5 text-center">Quy trình đăng ký</h2>
+    <div class="timeline">
+      <div class="timeline-step">
+        <h5>Bước 1</h5>
+        <p>Nhập họ tên và số điện thoại trùng MB Bank.</p>
+      </div>
+      <div class="timeline-step">
+        <h5>Bước 2</h5>
+        <p>Nhận mã giảm giá qua thông báo trong app.</p>
+      </div>
+      <div class="timeline-step">
+        <h5>Bước 3</h5>
+        <p>Chọn STK & nhập mã để thanh toán ưu đãi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Accordion: Điều kiện -->
+<section class="py-4 bg-white">
+  <div class="container">
+    <h2 class="text-center text-primary fw-bold mb-4">Thông tin thêm</h2>
+    <div class="accordion" id="infoAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="conditionHeader">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#conditionContent">
+            Điều kiện để sở hữu STK đẹp
+          </button>
+        </h2>
+        <div id="conditionContent" class="accordion-collapse collapse" data-bs-parent="#infoAccordion">
+          <div class="accordion-body">
+            <p>Bạn cần <strong>đã có tài khoản MB Bank</strong> mới mua STK đẹp.</p>
+            <p>Nếu chưa có, bạn có thể <a href="https://mbbank.vn/landingpage?ref=STKDEP">đăng ký tại đây</a> để nhận mã ưu đãi lên đến 11 triệu đồng.</p>
+            <p>Mở tài khoản online, không cần ra ngân hàng.</p>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2025 MB Bank. Bản quyền được bảo hộ.</p>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- FAQ -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center text-primary mb-4">Câu hỏi thường gặp</h2>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="q1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+            STK đẹp là gì?
+          </button>
+        </h2>
+        <div id="a1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Là số tài khoản ngân hàng MB Bank được chọn theo yêu cầu cá nhân: ngày sinh, số phong thủy, số dễ nhớ...
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="q2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+            Có phải số nào cũng mua được không?
+          </button>
+        </h2>
+        <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Bạn sẽ được lựa chọn số còn trống trong hệ thống MB Bank – không phải mọi số đều có sẵn.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="q3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
+            Mua xong tôi dùng ở đâu?
+          </button>
+        </h2>
+        <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Sau khi thanh toán, bạn nhận mã và sử dụng trực tiếp trong app MB Bank để kích hoạt số tài khoản.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="q4">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a4">
+            Tôi có cần cung cấp thông tin gì không?
+          </button>
+        </h2>
+        <div id="a4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            Có. Bạn cần cung cấp <strong>họ tên và số điện thoại</strong> đúng như trên app MB Bank để ngân hàng có thể gửi mã ưu đãi về tài khoản MB của bạn.
+            <br><br>
+            Chúng tôi <strong>không yêu cầu đăng nhập, không giữ căn cước, không can thiệp vào tài khoản</strong>. Mọi thao tác đều an toàn và do bạn chủ động thực hiện.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5 text-center text-white" style="background: linear-gradient(45deg, #0056D2, #003C94);">
+  <div class="container">
+    <h2 class="mb-3">Sẵn sàng sở hữu STK đẹp chưa?</h2>
+    <a href="#" class="btn btn-light btn-lg">Bắt đầu ngay</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-4 text-center bg-dark text-white">
+  <div class="container">
+    <p class="mb-1 fw-semibold">&copy; 2025 STK Đẹp. Bản quyền được bảo hộ.</p>
+    <p class="footer-note">
+      Website không trực thuộc MB Bank. Chúng tôi là đơn vị cung cấp mã ưu đãi hợp tác với ngân hàng.
+    </p>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const stkList = [
+    { number: '9999', desc: 'Tứ quý quyền lực' },
+    { number: '6868', desc: 'Lộc phát song hành' },
+    { number: '7979', desc: 'Thần tài kép' },
+    { number: '3939', desc: 'Tài lộc vững vàng' },
+    { number: '2024', desc: 'Năm sinh ý nghĩa' },
+    { number: '123456', desc: 'Dãy tiến đều đẹp' }
+  ];
+
+  let current = 0;
+  const el = document.getElementById("stk-highlight");
+  setInterval(() => {
+    const stk = stkList[current];
+    el.style.opacity = 0;
+    setTimeout(() => {
+      el.textContent = `STK: ${stk.number} – ${stk.desc}`;
+      el.style.opacity = 1;
+    }, 300);
+    current = (current + 1) % stkList.length;
+  }, 2500);
+
+  let cart = [];
+
+  function addToCart(stk, price) {
+    cart.push({ stk, price });
+    updateCartIcon();
+  }
+
+  function updateCartIcon() {
+    document.getElementById("cart-count").textContent = cart.length;
+  }
+
+  function toggleCart() {
+    const modal = new bootstrap.Modal(document.getElementById('cartModal'));
+    renderCartItems();
+    modal.show();
+  }
+
+  function renderCartItems() {
+    const container = document.getElementById("cart-items");
+    if (cart.length === 0) {
+      container.innerHTML = "<p>Chưa có sản phẩm nào.</p>";
+      return;
+    }
+
+    let html = "<ul class='list-group'>";
+    cart.forEach((item, index) => {
+      html += `
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>${item.stk}</strong><br>
+            <small>${item.price.toLocaleString()}đ</small>
+          </div>
+          <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">Xoá</button>
+        </li>`;
+    });
+    html += "</ul>";
+    container.innerHTML = html;
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartIcon();
+    renderCartItems();
+  }
+
+  function openChat() {
+    alert("Tính năng chat AI hoặc hỗ trợ sẽ được tích hợp sau.");
+  }
+</script>
 </body>
 </html>
